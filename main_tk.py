@@ -8,10 +8,13 @@ if __name__ == '__main__':
     root.state('iconic')
     root.bind('<Map>', lambda event: root.destroy())
 
+    # don't group (called before `update`)
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('winand.screen_on')
     root.update()
-    top_level_hwnd = ctypes.windll.user32.GetParent(root.winfo_id())
+    root.iconbitmap('assets/sun_white.ico') # called after `update`
 
     bar = ITaskBarList3()
+    top_level_hwnd = ctypes.windll.user32.GetParent(root.winfo_id())
     bar.SetProgressValue(top_level_hwnd, 1, 1)
     bar.SetProgressState(top_level_hwnd, 8)
 
