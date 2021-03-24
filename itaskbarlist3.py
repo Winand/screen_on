@@ -1,3 +1,4 @@
+import pythoncom
 import ctypes
 from ctypes import c_uint,c_short,c_ubyte,byref,Structure,oledll, \
                     POINTER, HRESULT, c_void_p
