@@ -8,10 +8,10 @@ if __name__ == '__main__':
     root.state('iconic')
     root.bind('<Map>', lambda event: root.destroy())
 
-    # don't group (called before `update`)
+    # don't group (called before `update_idletasks`)
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('winand.screen_on')
-    root.update()
-    root.iconbitmap('assets/sun_white.ico') # called after `update`
+    root.update_idletasks()  # https://stackoverflow.com/a/29159152
+    root.iconbitmap('assets/sun_white.ico') # called after `update_idletasks`
 
     bar = ITaskBarList3()
     top_level_hwnd = ctypes.windll.user32.GetParent(root.winfo_id())
