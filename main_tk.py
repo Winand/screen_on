@@ -5,6 +5,7 @@ from screen_on.itaskbarlist3 import ITaskBarList3, ctypes
 if __name__ == '__main__':
     root = Tk()
     root.title("Screen On")
+    root.attributes('-alpha', 0)
     root.state('iconic')
     root.bind('<Map>', lambda event: root.destroy())
 
