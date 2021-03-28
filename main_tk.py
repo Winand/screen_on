@@ -19,10 +19,10 @@ if __name__ == '__main__':
     bar.SetProgressValue(top_level_hwnd, 1, 1)
     bar.SetProgressState(top_level_hwnd, 8)
 
-    # https://stackoverflow.com/questions/49045701/prevent-screen-from-sleeping-with-c-sharp
+    # https://stackoverflow.com/q/49045701 Prevent screen from sleeping with C#
     # https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate
     # https://github.com/pedrolcl/screensaver-disabler
-    # https://stackoverflow.com/questions/64870484
+    # https://stackoverflow.com/q/64870484 prevent display from turning off
     ES_CONTINUOUS = 0x80000000
     ES_SYSTEM_REQUIRED = 0x00000001
     ES_DISPLAY_REQUIRED = 0x00000002
