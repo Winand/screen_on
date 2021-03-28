@@ -32,28 +32,22 @@ def gen_method(ptr, method_index, *arg_types):
 
 def create_instance(clsid, iid):
     ptr = c_void_p()
-    try:
-        res = ole32.CoCreateInstance(byref(Guid(clsid)), 0, CLSCTX_INPROC_SERVER,
-                                     byref(Guid(iid)), byref(ptr))
-        if not res:
-            return ptr
-        else: return 0
-    except: return 0
+    ole32.CoCreateInstance(byref(Guid(clsid)), 0, CLSCTX_INPROC_SERVER,
+                           byref(Guid(iid)), byref(ptr))
+    return ptr
 
 
 def create_instance_ex(obj, clsid, iid):
     "Creates an instance and generates methods"
     ptr = create_instance(clsid, iid)
-    if ptr:
-        for i in obj._methods_:
-            setattr(obj, i[0], gen_method(ptr, i[1], *i[2]))
-        obj.Release = gen_method(ptr, 2)
-    else:
-        print("CoCreateInstance failed")
+    for i in obj._methods_:
+        setattr(obj, i[0], gen_method(ptr, i[1], *i[2]))
+    obj.Release = gen_method(ptr, 2)
     return ptr
 
 
 class ITaskBarList3:
+    ptr = None
     _methods_ = (
         ("SetProgressValue", 9, (HWND,ULARGE_INTEGER,ULARGE_INTEGER)),
         ("SetProgressState", 10, (HWND,INT)),
