@@ -15,7 +15,7 @@ if __name__ == '__main__':
     root.iconbitmap('assets/sun_white.ico') # called after `update_idletasks`
 
     bar = ITaskBarList3()
-    top_level_hwnd = ctypes.windll.user32.GetParent(root.winfo_id())
+    top_level_hwnd = int(root.wm_frame(), 16)
     bar.SetProgressValue(top_level_hwnd, 1, 1)
     bar.SetProgressState(top_level_hwnd, 8)
 
