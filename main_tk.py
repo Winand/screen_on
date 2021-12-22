@@ -1,5 +1,5 @@
 from tkinter import Tk
-from screen_on.itaskbarlist3 import ITaskBarList3, ctypes
+from itaskbarlist3 import ITaskBarList3, ctypes
 
 
 if __name__ == '__main__':
