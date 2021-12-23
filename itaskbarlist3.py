@@ -8,6 +8,13 @@ CLSCTX_INPROC_SERVER = 0x1
 CLSID_TaskbarList = "{56FDF344-FD6D-11d0-958A-006097C9A090}"
 IID_ITaskbarList3 = "{EA1AFB91-9E28-4B86-90E9-9E9F8A5EEFAF}"
 
+# TBPFLAG
+TBPF_NOPROGRESS = 0
+TBPF_INDETERMINATE = 1
+TBPF_NORMAL = 2  # green
+TBPF_ERROR = 4  # red
+TBPF_PAUSED = 8  # yellow
+
 
 class Guid(Structure):
     _fields_ = [("Data1", c_uint),
