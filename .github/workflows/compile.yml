@@ -42,7 +42,7 @@ jobs:
 
       - uses: papeloto/action-zip@v1
         with:
-          files: ${{ github.workspace }}\main_tk.dist\
+          files: main_tk.dist
           dest: screen_on_release.zip
 
       # Double zip https://github.com/actions/upload-artifact/issues/39
