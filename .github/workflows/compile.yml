@@ -45,6 +45,7 @@ jobs:
           files: ${{ github.workspace }}\main_tk.dist\
           dest: screen_on_release.zip
 
+      # Double zip https://github.com/actions/upload-artifact/issues/39
       - name: Store dist
         uses: actions/upload-artifact@v2
         with:
