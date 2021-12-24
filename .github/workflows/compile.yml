@@ -40,6 +40,11 @@ jobs:
       - name: Compile with Nuitka
         run: python -m nuitka --standalone --python-flag=no_site --plugin-enable=tk-inter --windows-icon-from-ico=assets\sun_white.ico --assume-yes-for-downloads ${{ github.workspace }}\main_tk.py
 
+      - name: Copy assets
+        run: |
+          mkdir ${{ github.workspace }}\main_tk.dist\assets
+          copy ${{ github.workspace }}\assets\sun_white.ico ${{ github.workspace }}\main_tk.dist\assets\sun_white.ico
+
       - uses: papeloto/action-zip@v1
         with:
           files: main_tk.dist
