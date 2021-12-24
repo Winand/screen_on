@@ -42,8 +42,8 @@ jobs:
 
       - uses: papeloto/action-zip@v1
         with:
-          files: ${{ github.workspace }}\main_tk.dist\
-          dest: ${{ github.workspace }}\screen_on_release.zip
+          files: ${{ github.workspace }}\main_tk.dist
+          dest: screen_on_release.zip
 
       - name: Store dist
         uses: actions/upload-artifact@v2
