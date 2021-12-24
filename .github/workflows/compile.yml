@@ -40,8 +40,13 @@ jobs:
       - name: Compile with Nuitka
         run: python -m nuitka --standalone --python-flag=no_site --plugin-enable=tk-inter --windows-icon-from-ico=assets\sun_white.ico --assume-yes-for-downloads ${{ github.workspace }}\main_tk.py
 
+      - uses: papeloto/action-zip@v1
+        with:
+          files: ${{ github.workspace }}\main_tk.dist
+          dest: ${{ github.workspace }}\screen_on_release.zip
+
       - name: Store dist
         uses: actions/upload-artifact@v2
         with:
           name: screen_on_release
-          path: ${{ github.workspace }}\main_tk.dist
+          path: ${{ github.workspace }}\screen_on_release.zip
