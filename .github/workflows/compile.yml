@@ -30,7 +30,7 @@ jobs:
       # https://github.com/actions/virtual-environments/issues/30#issuecomment-634082952
       - name: Install ccache
         run: |
-          C:\msys64\usr\bin\pacman --noconfirm -S mingw-w64-ccache
+          C:\msys64\usr\bin\pacman --noconfirm -S mingw-w64-x86_64-ccache
 
       - name: Set CC variable
         run: echo "CC=C:\msys64\mingw64\bin\gcc.exe" >> $env:GITHUB_ENV
