@@ -28,9 +28,12 @@ jobs:
           ref: 'master'
          
       - name: Set up MinGW
-        uses: msys2/setup-msys2@v2
-        with:
-          install: mingw-w64-x86_64-gcc
+        run: |
+          C:\msys64\pacman -S mingw-w64-x86_64-gcc
+          echo "CC=C:\msys64\mingw64\bin\gcc.exe" >> $env:GITHUB_ENV
+#        uses: msys2/setup-msys2@v2
+#        with:
+#          install: mingw-w64-x86_64-gcc
 
       # https://github.com/actions/setup-python
       - name: Use Python 3.8
