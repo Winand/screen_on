@@ -29,6 +29,8 @@ jobs:
          
       - name: Set up MinGW
         uses: msys2/setup-msys2@v2
+        with:
+          install: mingw-w64-x86_64-gcc
 
       # https://github.com/actions/setup-python
       - name: Use Python 3.8
