@@ -51,6 +51,16 @@ jobs:
           mkdir ${{ github.workspace }}\main_tk.dist\assets
           copy ${{ github.workspace }}\assets\sun_white.ico ${{ github.workspace }}\main_tk.dist\assets\sun_white.ico
 
+      - name: Run UPX
+        uses: crazy-max/ghaction-upx@v1
+        with:
+          version: latest
+          files: |
+            ${{ github.workspace }}\main_tk.dist\*.exe
+            ${{ github.workspace }}\main_tk.dist\*.dll
+            ${{ github.workspace }}\main_tk.dist\*.pyd
+          args: -fq
+
       - uses: papeloto/action-zip@v1
         with:
           files: main_tk.dist
