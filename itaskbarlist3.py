@@ -1,4 +1,3 @@
-import pythoncom
 import ctypes
 from ctypes import c_uint,c_short,c_ubyte,byref,Structure,oledll, \
                     POINTER, HRESULT, c_void_p
@@ -14,6 +13,8 @@ TBPF_INDETERMINATE = 1
 TBPF_NORMAL = 2  # green
 TBPF_ERROR = 4  # red
 TBPF_PAUSED = 8  # yellow
+
+ctypes.windll.ole32.CoInitialize(None)  # instead of `import pythoncom`
 
 
 class Guid(Structure):
