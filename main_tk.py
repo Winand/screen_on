@@ -1,14 +1,15 @@
 from tkinter import Tk
 from itaskbarlist3 import ITaskBarList3, ctypes, TBPF_PAUSED, TBPF_ERROR
 
-ES_CONTINUOUS = 0x80000000
-ES_SYSTEM_REQUIRED = 0x00000001
-ES_DISPLAY_REQUIRED = 0x00000002
+ES_CONTINUOUS = 0x80000000  # The state should remain in effect until the next call that uses ES_CONTINUOUS
+ES_SYSTEM_REQUIRED = 0x00000001  # Forces the system to be in the working state by resetting the system idle timer
+ES_DISPLAY_REQUIRED = 0x00000002  # Forces the display to be on by resetting the display idle timer
+ES_AWAYMODE_REQUIRED = 0x00000040  # https://answers.microsoft.com/en-us/windows/forum/all/what-is-away-mode/2a85fc62-9922-4b2e-be47-60a7ca8b1dc0
 
 current_state = -1
 states = [  # progress state, execution state
     (TBPF_PAUSED, ES_CONTINUOUS | ES_DISPLAY_REQUIRED),
-    (TBPF_ERROR, ES_CONTINUOUS | ES_SYSTEM_REQUIRED),
+    (TBPF_ERROR, ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED),
 ]
 
 
