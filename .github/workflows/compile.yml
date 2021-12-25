@@ -31,6 +31,11 @@ jobs:
         uses: egor-tensin/setup-mingw@v2
         with:
           platform: x64
+        id: mingw
+
+      - name: Set up CC variable
+        run: |
+         echo "CC=${{steps.mingw.outputs.gcc}}" >> $env:GITHUB_ENV
 
       # https://github.com/actions/setup-python
       - name: Use Python 3.8
