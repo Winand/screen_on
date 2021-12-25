@@ -28,13 +28,12 @@ jobs:
           ref: 'master'
      
       # https://github.com/actions/virtual-environments/issues/30#issuecomment-634082952
-      - name: Set up MinGW
+      - name: Install ccache
         run: |
-          C:\msys64\usr\bin\pacman --noconfirm -S mingw-w64-x86_64-gcc
-          echo "CC=C:\msys64\mingw64\bin\gcc.exe" >> $env:GITHUB_ENV
-#        uses: msys2/setup-msys2@v2
-#        with:
-#          install: mingw-w64-x86_64-gcc
+          C:\msys64\usr\bin\pacman --noconfirm -S mingw-w64-ccache
+
+      - name: Set CC variable
+        run: echo "CC=C:\msys64\mingw64\bin\gcc.exe" >> $env:GITHUB_ENV
 
       # https://github.com/actions/setup-python
       - name: Use Python 3.8
