@@ -1,5 +1,5 @@
 from tkinter import Tk
-from itaskbarlist3 import ITaskBarList3, ctypes, TBPF_PAUSED, TBPF_ERROR
+from itaskbarlist3 import ITaskBarList3, ctypes, TBPF
 
 ES_CONTINUOUS = 0x80000000  # The state should remain in effect until the next call that uses ES_CONTINUOUS
 ES_SYSTEM_REQUIRED = 0x00000001  # Forces the system to be in the working state by resetting the system idle timer
@@ -8,8 +8,8 @@ ES_AWAYMODE_REQUIRED = 0x00000040  # https://answers.microsoft.com/en-us/windows
 
 current_state = -1
 states = [  # progress state, execution state
-    (TBPF_PAUSED, ES_CONTINUOUS | ES_DISPLAY_REQUIRED),
-    (TBPF_ERROR, ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED),
+    (TBPF.PAUSED, ES_CONTINUOUS | ES_DISPLAY_REQUIRED),
+    (TBPF.ERROR, ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED),
 ]
 
 
