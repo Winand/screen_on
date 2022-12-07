@@ -1,5 +1,6 @@
 from tkinter import Tk
-from itaskbarlist3 import ITaskBarList3, ctypes, TBPF
+from itaskbarlist3 import ITaskBarList3, TBPF
+from ctypes import windll
 
 ES_CONTINUOUS = 0x80000000  # The state should remain in effect until the next call that uses ES_CONTINUOUS
 ES_SYSTEM_REQUIRED = 0x00000001  # Forces the system to be in the working state by resetting the system idle timer
@@ -28,7 +29,7 @@ def set_next_state(event=None):
     # https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate
     # https://github.com/pedrolcl/screensaver-disabler
     # https://stackoverflow.com/questions/64870484
-    ctypes.windll.kernel32.SetThreadExecutionState(states[current_state][1])
+    windll.kernel32.SetThreadExecutionState(states[current_state][1])
 
 
 if __name__ == '__main__':
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     root.bind('<Map>', set_next_state)
 
     # don't group (called before `update_idletasks`)
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('winand.screen_on')
+    windll.shell32.SetCurrentProcessExplicitAppUserModelID('winand.screen_on.test')
     root.update_idletasks()  # https://stackoverflow.com/a/29159152
     root.iconbitmap('assets/sun_white.ico') # called after `update_idletasks`
 
